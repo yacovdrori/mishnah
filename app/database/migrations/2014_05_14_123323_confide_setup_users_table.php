@@ -15,7 +15,6 @@ class ConfideSetupUsersTable extends Migration {
         Schema::create('users', function($table)
         {
             $table->increments('id');
-            $table->string('username');
  			$table->string('firstname');
 			$table->string('lastname');
 			$table->string('remember_token');
