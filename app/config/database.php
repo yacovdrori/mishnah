@@ -65,10 +65,10 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => 'ec2-54-204-32-91.compute-1.amazonaws.com',
+			'database' => 'dhilj0d0279aq',
+			'username' => 'bpkhczpmisynva',
+			'password' => '47hRYSn-1m9txpupgE4eNgMNk3',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
