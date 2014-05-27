@@ -20,6 +20,7 @@ class AdminController extends BaseController {
 				->withInput(Input::get())
 				;
 		} else {
+				Auth::check();
 				$niftar = new Niftar;
 					$niftar->firstname	= Input::get('firstname');
 					$niftar->lastname	= Input::get('lastname');
