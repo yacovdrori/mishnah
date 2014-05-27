@@ -29,7 +29,6 @@ class CreateNiftarsTable extends Migration {
 			$table->text('state');
 			$table->timestamps();
 		});	
-
 	}
 
 	/**
