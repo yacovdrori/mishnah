@@ -22,7 +22,7 @@ class CreateNiftarsTable extends Migration {
 			$table->date('death_date');
 			$table->text('description');
 			$table->date('birthdate');
-			$table->date('deathdate');
+			//$table->date('deathdate');
 			$table->text('fathersname');
 			$table->text('mothersname');
 			$table->text('city');

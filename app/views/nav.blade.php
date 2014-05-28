@@ -15,7 +15,7 @@
                                          <li class = "dropdown">
                                          	<a href = "users/profile" class = "dropdown-toggle" data-toggle = "dropdown">{{Auth::user()->firstname}}<b class = "caret"></b></a>
                                          	<ul class = "dropdown-menu">
-                                                 <li>{{ HTML::link('users/profile','פרופיל משתמש')}}</li>
+                                                 <li>{{ HTML::link('admin/profile','פרופיל משתמש')}}</li>
                                             </ul>
                                         </li>
                                         @endif
