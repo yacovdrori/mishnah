@@ -40,5 +40,4 @@ class CreateNiftarsTable extends Migration {
 	{
 		Schema::drop('niftars');
 	}
-
 }
