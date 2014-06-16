@@ -39,6 +39,3 @@
                                                 <li><a href = "#">אודות</a></li>
                                         <li class = "active">{{ HTML::link('/','דף הבית')}}</li>
                                         </ul>
-
-
-\
