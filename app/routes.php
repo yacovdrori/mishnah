@@ -1,4 +1,4 @@
-<?php
+<?php	
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ Route::get('/', function()
 	if (!Auth::check()){
 		return View::make('pages.home');		
 	} else {
-		return View::make('admin.profile');
+		return Route::get('admin/profile');
 	}
 });
 // Route::get('login', array('uses' => 'HomeController@showLogin'));
