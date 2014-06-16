@@ -20,7 +20,7 @@
                           
                 </div>
                   @if(!Auth::check())
-                  	@yield('profile')
+                  	@yield('users/profile')
                   @else
 					@yield('content')
 				  @endif
