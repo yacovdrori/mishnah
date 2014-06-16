@@ -16,7 +16,7 @@ Route::get('/', function()
 	if (!Auth::check()){
 		return View::make('pages.home');		
 	} else {
-		return Route::get('admin/profile');
+		return Redirect::to('admin/profile');
 	}
 });
 // Route::get('login', array('uses' => 'HomeController@showLogin'));
