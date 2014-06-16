@@ -20,7 +20,6 @@
                           
                 </div>
                   @yield('content')
-				  
                 </div>
                         <div class = "navbar navbar-default navbar-fixed-bottom">
                         <div class = "container">

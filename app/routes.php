@@ -13,7 +13,13 @@
 
 Route::get('/', function()
 {
-	return View::make('pages.home');
+	if (!Auth.check()){
+		return View::make('pages.home');		
+	}
+
+	else {
+		return View::make('admin.profile');
+	}
 });
 // Route::get('login', array('uses' => 'HomeController@showLogin'));
 // Route::post('login', array('uses' => 'HomeController@doLogin'));
