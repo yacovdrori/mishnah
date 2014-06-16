@@ -15,11 +15,11 @@
     <div class="container text-right">
     	{{ Form::open(array('url' => 'admin/postFriend','class'=>'form-inline','role'=>'form','id'=>'addFriend')) }}
     	<div class="row">
-    		<div class="col-md-4 "></div>
+    		<div class="col-md-3 "></div>
     		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
-    		<div class="col-md-2 ">{{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'firstName')) }}</div>
-    		<div class="col-md-2 ">{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
-    		<div class="col-md-2 ">הזמן חבר</div>
+    		<div class="col-md-3 ">{{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'firstName')) }}</div>
+    		<div class="col-md-3 ">{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
+    		<div class="col-md-1 ">הזמן חבר</div>
     	</div>
     	<div class="row">
     		<div class="col-md-8"></div>

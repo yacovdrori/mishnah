@@ -136,6 +136,10 @@ class AdminController extends BaseController {
 	{
 		return View::make('users/confirm');
 	}
+	public function postFriend()
+	{
+		
+	}
 	
 }
 ?>
