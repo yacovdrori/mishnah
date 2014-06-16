@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	if (!Auth.check()){
+	if (!Auth::check()){
 		return View::make('pages.home');		
 	}
 
