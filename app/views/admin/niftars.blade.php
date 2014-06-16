@@ -19,6 +19,7 @@
     		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
     		<div class="col-md-3 ">{{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'firstName')) }}</div>
     		<div class="col-md-3 ">{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
+    		{{ Form::hidden('niftarId', $niftar->id)}}
     		<div class="col-md-1 ">הזמן חבר</div>
     	</div>
     	<div class="row">
