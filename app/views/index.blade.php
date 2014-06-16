@@ -19,11 +19,8 @@
 			        @endif
                           
                 </div>
-                  @if(!Auth::check())
-                  	@yield('admin/profile')
-                  @else
-					@yield('content')
-				  @endif
+                  @yield('content')
+				  
                 </div>
                         <div class = "navbar navbar-default navbar-fixed-bottom">
                         <div class = "container">
