@@ -15,9 +15,7 @@ Route::get('/', function()
 {
 	if (!Auth::check()){
 		return View::make('pages.home');		
-	}
-
-	else {
+	} else {
 		return View::make('admin.profile');
 	}
 });
