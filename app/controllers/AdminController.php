@@ -139,6 +139,7 @@ class AdminController extends BaseController {
 	public function postFriend()
 	{
 		$email = Friend::where('email','=',Input::get('email'));
+		dd($email);
 		if (is_null($email))
 		{
 		    $friend = new Friend;

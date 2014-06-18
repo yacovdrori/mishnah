@@ -9,5 +9,6 @@ class Friend extends Eloquent {
 	 */
 	 
 	protected $table = 'friends';
+	public  $timestamps = true;
 
 }
