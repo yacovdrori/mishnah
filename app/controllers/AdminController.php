@@ -138,17 +138,17 @@ class AdminController extends BaseController {
 	}
 	public function postFriend()
 	{
-		// $email = Friend::where('email','=',Input::get('email'));
-		// dd($email);
-		// if (is_null($email))
-		// {
-		    // $friend = new Friend;
-			// $friend->name = Input::get('name');
-			// $friend->email = Input::get('email');
-			// $friend->save();
-// 			
-		// }
-		return View::make('admin/niftars');
+		$email = Friend::where('email','=',Input::get('email'));
+		//dd($email);
+		if (is_null($email))
+		{
+		    $friend = new Friend;
+			$friend->name = Input::get('name');
+			$friend->email = Input::get('email');
+			$friend->save();
+			
+		}
+		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')));
 	}
 	
 }
