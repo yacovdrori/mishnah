@@ -148,7 +148,7 @@ class AdminController extends BaseController {
 			// $friend->save();
 // 			
 		// }
-		return View::make('admin/niftars')->with('niftar',Input::get('niftarId'));
+		return View::make('admin/niftars');
 	}
 	
 }
