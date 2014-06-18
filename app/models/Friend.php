@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Friend extends Eloquent implements UserInterface, RemindableInterface {
 	 /**
