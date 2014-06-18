@@ -13,7 +13,7 @@
         @endforeach
     </ul>
     <div class="container text-right">
-    	{{ Form::open(array('url' => 'admin/postFriend','class'=>'form-inline','role'=>'form','id'=>'addFriend')) }}
+    	{{ Form::open(array('url' => 'admin/friend','class'=>'form-inline','role'=>'form','id'=>'addFriend')) }}
     	<div class="row">
     		<div class="col-md-3 "></div>
     		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
