@@ -16,7 +16,7 @@ class CreateFriendsTable extends Migration {
 			$table->increments('id');
 			$table->string('name')->nullable();
 			$table->string('email');
-			$table->int('niftarId');
+			$table->integer('niftarId');
 			$table->foreign('niftarId')->references('id')->on('niftars');
 			$table->timestamps();
 		});
