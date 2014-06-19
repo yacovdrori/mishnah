@@ -37,6 +37,8 @@
 <div class="wrapper">
 <div class="content-secondary">
 </div>
+<h3>חברים שהוזמנו</h3>
+
 </div>
 </div> 
 

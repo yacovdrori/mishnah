@@ -63,16 +63,26 @@ return array(
 			'prefix'    => '',
 		),
 
-		'pgsql' => array(
-			'driver'   => 'pgsql',
-			'host'     => 'ec2-54-204-32-91.compute-1.amazonaws.com',
-			'database' => 'dhilj0d0279aq',
-			'username' => 'bpkhczpmisynva',
-			'password' => '47hRYSn-1m9txpupgE4eNgMNk3',
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		),
+		// 'pgsql' => array(
+			// 'driver'   => 'pgsql',
+			// 'host'     => 'ec2-54-204-32-91.compute-1.amazonaws.com',
+			// 'database' => 'dhilj0d0279aq',
+			// 'username' => 'bpkhczpmisynva',
+			// 'password' => '47hRYSn-1m9txpupgE4eNgMNk3',
+			// 'charset'  => 'utf8',
+			// 'prefix'   => '',
+			// 'schema'   => 'public',
+		// ),
+			'pgsql' => array(
+				'driver'   => 'pgsql',
+				'host'     => 'ec2-54-225-101-64.compute-1.amazonaws.com',
+				'database' => 'd6ckn7ga6e54t7',
+				'username' => 'mvkjrvpoeacvxt',
+				'password' => 'pSmpl-ke26KSw-DKFXsf8GQNtA',
+				'charset'  => 'utf8',
+				'prefix'   => '',
+				'schema'   => 'public',
+			),
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
