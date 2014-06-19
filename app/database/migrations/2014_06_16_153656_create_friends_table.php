@@ -29,7 +29,13 @@ class CreateFriendsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('niftars');
+		Schema::drop('niftars', function (Blueprint $table)
+		{
+			$table->dropForeign('Friends');
+		}
+		
+		);
+		
 	}
 
 }
