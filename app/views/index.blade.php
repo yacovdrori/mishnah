@@ -17,6 +17,14 @@
 						    </div>
 					    </div>    
 			        @endif
+			        @if(! is_null($message))
+         				<div class="container">
+         					<div class="alert panel panel-danger">
+						        
+						            <p >{{ $message}}</p>
+						    </div>
+					    </div>    
+			        @endif
                           
                 </div>
                   @yield('content')

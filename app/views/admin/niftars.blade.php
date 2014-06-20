@@ -17,7 +17,7 @@
     	<div class="row">
     		<div class="col-md-3 "></div>
     		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
-    		<div class="col-md-3 ">{{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'firstName')) }}</div>
+    		<div class="col-md-3 ">{{ Form::text('name', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'name')) }}</div>
     		<div class="col-md-3 ">{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
     		{{ Form::hidden('niftarId', $niftar->id)}}
     		<div class="col-md-1 ">הזמן חבר</div>
@@ -38,7 +38,13 @@
 <div class="content-secondary">
 </div>
 <h3>חברים שהוזמנו</h3>
-
+@foreach ($friends->all() as $friend)
+	<div class="row">
+		<div class="col-md-6"></div>
+		<div class="col-md-3">{{$friend->name}}</div>
+		<div class="col-md-3">{{$friend->email}}</div>	
+	</div>
+@endforeach
 </div>
 </div> 
 

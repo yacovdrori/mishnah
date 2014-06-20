@@ -138,17 +138,19 @@ class AdminController extends BaseController {
 	}
 	public function postFriend()
 	{
-		$email = Friend::where('email','like',Input::get('email'));
+		$email = Friend::where('email','=',Input::get('email'))->first();
 		//dd($email);
 		if (is_null($email))
 		{
 		    $friend = new Friend;
 			$friend->name = Input::get('name');
 			$friend->email = Input::get('email');
+			$friend->niftarId = Input::get('niftarId');
 			$friend->save();
-			
+		$message = Input::get('name') . 'הוסף בהצלחה'	;
 		}
-		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')));
+		$message = 'הכתובת כבר במערכת, נסה שם אחר';
+		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);
 	}
 	
 }
