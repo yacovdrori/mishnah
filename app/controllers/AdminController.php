@@ -130,7 +130,7 @@ class AdminController extends BaseController {
 	}
 	public function getNiftar($id)
 	{
-		return View::make('admin/niftars')->with('niftar',Niftar::find($id));
+		return View::make('admin/niftars')->with('niftar',Niftar::find($id))->with('friends',Friend::find($id));
 	}
 		public function getConfirm()
 	{
@@ -147,6 +147,17 @@ class AdminController extends BaseController {
 			$friend->email = Input::get('email');
 			$friend->niftarId = Input::get('niftarId');
 			$friend->save();
+		$user = User::find(Auth::user()->id);
+		$data->name = Input::get('name');
+		$data->invitename = $user->firstname . " " . $user->lastname;
+		$data->relationship = "בן";
+		Mail::queue("emails.emailfriend", $data, function($message)
+		{
+			$message->to(Input::get('email'))
+					->subject("משניות או לא להיות");
+			
+		}
+		);
 		$message = Input::get('name') . 'הוסף בהצלחה'	;
 		}
 		$message = 'הכתובת כבר במערכת, נסה שם אחר';
