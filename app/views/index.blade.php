@@ -17,7 +17,7 @@
 						    </div>
 					    </div>    
 			        @endif
-			        @if(! is_null($message))
+			        @if(isset($message))
          				<div class="container">
          					<div class="alert panel panel-danger">
 						        
