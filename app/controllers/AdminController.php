@@ -165,7 +165,7 @@ class AdminController extends BaseController {
 		$message = 'הכתובת כבר במערכת, נסה שם אחר';
 		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);
 	}
-	public function getDelfriend($id)
+	public function getDelFriend($id)
 	{
 		dd($id);
 		$nid = Friend::find($id)->niftarId;
