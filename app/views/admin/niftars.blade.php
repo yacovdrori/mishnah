@@ -45,7 +45,7 @@
 		<div class="col-md-3">{{$friend->email}}</div>
 		<div class="col-md-1">
 			<div class="btn-group btn-group-xs">
-				<button type="button" class="btn btn-default">
+				<button type="button" class="btn btn-default" href="{{action('AdminController@getDelFriend')}}">
 	  				<span class="glyphicon glyphicon-remove"></span>
 				</button>
 			</div>
