@@ -167,6 +167,7 @@ class AdminController extends BaseController {
 	}
 	public function getDelfriend($id)
 	{
+		dd($id);
 		$nid = Friend::find($id)->niftarId;
 		return View::make('admin/niftars')->with('niftar',Niftar::find($nid))->with('friends',Friend::find($id));
 	}
