@@ -148,9 +148,10 @@ class AdminController extends BaseController {
 			$friend->niftarId = Input::get('niftarId');
 			$friend->save();
 		$user = User::find(Auth::user()->id);
-		$data->name = Input::get('name');
-		$data->invitename = $user->firstname . " " . $user->lastname;
-		$data->relationship = "בן";
+		$name = Input::get('name');
+		$invitename = $user->firstname . " " . $user->lastname;
+		$relationship = "בן";
+		$data=compact($user,$name,$invitename,$relationship);
 		Mail::queue("emails.emailfriend", $data, function($message)
 		{
 			$message->to(Input::get('email'))
