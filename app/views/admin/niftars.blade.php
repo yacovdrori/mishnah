@@ -45,8 +45,8 @@
 		<div class="col-md-3">{{$friend->email}}</div>
 		<div class="col-md-1">
 			<div class="btn-group btn-group-xs">
-				<a class="btn btn-default" href="admin/delFriend/{{($friend->id)}}">
-	  				<span class="glyphicon glyphicon-remove"></span>
+				<a class="btn btn-default" href="admin/delFriend/{{($friend->id)}}">x</a>
+	  				
 			</div>
 		</div>	
 	</div>
