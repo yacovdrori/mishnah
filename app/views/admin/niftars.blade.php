@@ -40,9 +40,16 @@
 <h3>חברים שהוזמנו</h3>
 @foreach ($friends->all() as $friend)
 	<div class="row">
-		<div class="col-md-6"></div>
+		<div class="col-md-5"></div>
 		<div class="col-md-3">{{$friend->name}}</div>
-		<div class="col-md-3">{{$friend->email}}</div>	
+		<div class="col-md-3">{{$friend->email}}</div>
+		<div class="col-md-1">
+			<div class="btn-group btn-group-xs">
+				<button type="button" class="btn btn-default">
+	  				<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</div>
+		</div>	
 	</div>
 @endforeach
 </div>

@@ -147,6 +147,7 @@ class AdminController extends BaseController {
 			$friend->email = Input::get('email');
 			$friend->niftarId = Input::get('niftarId');
 			$friend->save();
+		$user= new User;
 		$user = User::find(Auth::user()->id);
 		$name = Input::get('name');
 		$invitename = $user->firstname . " " . $user->lastname;
