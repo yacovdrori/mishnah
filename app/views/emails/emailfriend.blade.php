@@ -4,13 +4,13 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		{{dd($name)}}
+
 		<h2>שלום {{$name}}</h2>
 
 		<div>
-			{{ $invitename}} הזמין אותך ללמוד משניות לעילוי נשמת {{$relationship}} שנפטר.
+			{{ $user->firstname . ' ' . $user->lastname}} הזמין אותך ללמוד משניות לעילוי נשמת הנפטר.
 			להרשמה ובחירת מסכת, אנא לחץ על הקישור הבא.
-			{{ HTML::link("admin/newuser/" . $nid, "לימוד לעילוי נשמת " . $nfirstname . " " . $nlastname . " בן " .
+			{{ HTML::link("admin/newuser/" . $nid, "לימוד לעילוי נשמת " . $niftar->firstname . " " . $niftar->lastname . " בן " .
     	 $nfathersname . " ו" .$nmothersname) }}.
 			
 			
