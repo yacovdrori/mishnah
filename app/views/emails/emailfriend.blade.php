@@ -9,7 +9,7 @@
 		<div>
 			{{$invitename}} הזמין אותך ללמוד משניות לעילוי נשמת {{$relationship}} שנפטר.
 			להרשמה ובחירת מסכת, אנא לחץ על הקישור הבא.
-			{{ HTML::link("admin/newuser/" . $nid, "לימוד לעילוי נשמת " $data['nfirstname'] . " " . $nlastname . " בן " .
+			{{ HTML::link("admin/newuser/" . $nid, "לימוד לעילוי נשמת " $nfirstname . " " . $nlastname . " בן " .
     	 $nfathersname . " ו" .$nmothersname) }}.
 			
 			
