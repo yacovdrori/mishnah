@@ -163,7 +163,7 @@ class AdminController extends BaseController {
 		$nfathersname = $niftar->fathersname;
 		$nmothersname = $niftar->mothersname;
 		//$data=compact($user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
-		dd($data);
+		//dd($data);
 		Mail::queue("emails.emailfriend", $data, function($message)
 			use ($user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname)
 		{
