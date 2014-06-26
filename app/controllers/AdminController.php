@@ -165,6 +165,7 @@ class AdminController extends BaseController {
 
 		$data = array('name' => $name , 
 					  'user' => $user ,
+					  'niftar' => $niftar,
 					  );
 
 		//	$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
