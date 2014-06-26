@@ -130,7 +130,7 @@ class AdminController extends BaseController {
 	}
 	public function getNiftar($id)
 	{
-		$friends=Friend::where('niftarid','=', value($id))->get();
+		$friends=Friend::where('niftarId','=', value($id))->get();
 		return View::make('admin/niftars')->with('niftar',Niftar::find($id))->with('friends',$friends);
 	}
 		public function getConfirm()
