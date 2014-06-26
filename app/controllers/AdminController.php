@@ -175,7 +175,7 @@ class AdminController extends BaseController {
 	{
 		//dd($id);
 		$nid = Friend::find($id)->niftarId;
-		$friends = Friend::find($nid);
+		$friends = Friend::where('niftarId',"=",$nid);
 		$friend = Friend::find($id);
 		$friend->delete();
 		return View::make('admin/niftars')->with('niftar',Niftar::find($nid))->with('friends',$friends)->with('message','נמחק בהצלחה');
