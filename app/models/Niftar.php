@@ -19,7 +19,7 @@ class Niftar extends Eloquent {
 
     	public function friend()
 	{
-		return $this->hasMany('Niftar','niftarId','id');
+		return $this->hasMany('Friend','niftarId','id');
 	}
 
 	public static $rules = array('firstname' 	=> 'required|alpha' , 

@@ -148,7 +148,7 @@ class AdminController extends BaseController {
 		//dd($email);
 		if (is_null($email))
 		{
-		    $friend = new Friend;
+			$friend = new Friend;
 			$friend->name = Input::get('name');
 			$friend->email = Input::get('email');
 			$friend->niftarId = Input::get('niftarId');
@@ -158,7 +158,11 @@ class AdminController extends BaseController {
 		$name = Input::get('name');
 		$invitename = $user->firstname . " " . $user->lastname;
 		$relationship = "בן";
-		$data=compact($user,$name,$invitename,$relationship);
+		$niftar = Niftar::find(Input::get('niftarId'));
+		$nfirstname = $niftar->firstname;
+		$nfathersname = $niftar->fathersname;
+		$nmothersname = $niftar->mothersname;
+		$data=compact($user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
 		Mail::queue("emails.emailfriend", $data, function($message)
 		{
 			$message->to(Input::get('email'))
