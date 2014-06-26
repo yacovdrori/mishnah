@@ -16,6 +16,12 @@ class Niftar extends Eloquent {
     {
         return $this->belongs_to('User');
     }
+
+    	public function friend()
+	{
+		return $this->hasMany('Niftar','niftarId','id')
+	}
+	
 	public static $rules = array('firstname' 	=> 'required|alpha' , 
 					   'lastname'  	=> 'required|alpha',
 					   'death_date' => 'date',

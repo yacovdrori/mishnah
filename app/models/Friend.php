@@ -10,5 +10,9 @@ class Friend extends Eloquent {
 	 
 	protected $table = 'friends';
 	public  $timestamps = true;
+	public function niftar()
+	{
+		$this->belongs_to("Niftar");
+	}
 
 }

@@ -84,6 +84,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany('Niftar','user_id');
 	}
+
 	
 public static $rules = array(
     'firstname'=>'required|alpha|min:2',
