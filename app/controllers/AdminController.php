@@ -162,7 +162,7 @@ class AdminController extends BaseController {
 		$nfirstname = $niftar->firstname;
 		$nfathersname = $niftar->fathersname;
 		$nmothersname = $niftar->mothersname;
-		$dd($nfirstname);
+		dd($nfirstname);
 		$data=compact($user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
 		Mail::queue("emails.emailfriend", $data, function($message)
 		{
