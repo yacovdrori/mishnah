@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		{{dd($invitename)}}
+		{{dd($name)}}
 		<h2>שלום {{$name}}</h2>
 
 		<div>
