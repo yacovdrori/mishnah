@@ -4,22 +4,22 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*",
-		"way/generators": "dev-master",
-		"laravelbook/ardent": "dev-master",
-		"codesleeve/asset-pipeline": "dev-master",
-		"facebook/php-sdk": "dev-master",
-		"patchwork/utf8": "1.1.*"
+		// "laravel/framework": "4.2.*",
+		// "way/generators": "dev-master",
+		// "laravelbook/ardent": "dev-master",
+		// "codesleeve/asset-pipeline": "dev-master",
+		// "facebook/php-sdk": "dev-master",
+		// "patchwork/utf8": "1.1.*"
 
 	},
 	"autoload": {
 		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/models",
-			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php"
+			// "app/commands",
+			// "app/controllers",
+			// "app/models",
+			// "app/database/migrations",
+			// "app/database/seeds",
+			// "app/tests/TestCase.php"
 		]
 	},
 	"scripts": {
