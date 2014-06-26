@@ -11,7 +11,7 @@
 			{{ $user->firstname . ' ' . $user->lastname}} הזמין אותך ללמוד משניות לעילוי נשמת הנפטר.
 			להרשמה ובחירת מסכת, אנא לחץ על הקישור הבא.
 			{{ HTML::link("admin/newuser/" . $nid, "לימוד לעילוי נשמת " . $niftar->firstname . " " . $niftar->lastname . " בן " .
-    	 $nfathersname . " ו" .$nmothersname) }}.
+    	 $niftar->fathersname . " ו" .$niftar->mothersname) }}.
 			
 			
 			תודה רבה
