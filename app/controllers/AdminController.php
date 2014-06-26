@@ -162,8 +162,10 @@ class AdminController extends BaseController {
 		$nfirstname = $niftar->firstname;
 		$nfathersname = $niftar->fathersname;
 		$nmothersname = $niftar->mothersname;
+
 		$data=Input::all();
-			$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
+
+		//	$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
 		//dd($data);
 		Mail::queue("emails.emailfriend", $data, function($message)
 			use ($user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname)
