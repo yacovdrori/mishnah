@@ -178,7 +178,7 @@ class AdminController extends BaseController {
 		$friends = Friend::where('niftarId',"=",$nid)->get();
 		$friend = Friend::find($id);
 		$friend->delete();
-		return Redirect::to('admin/niftars')->with('niftar',Niftar::find($nid))->with('friends',$friends)->with('message','נמחק בהצלחה');
+		return Redirect::to('admin/niftar/'.$nid)->with('niftar',Niftar::find($nid))->with('friends',$friends)->with('message','נמחק בהצלחה');
 	}
 	
 }
