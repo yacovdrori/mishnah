@@ -173,7 +173,7 @@ class AdminController extends BaseController {
 		//	$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
 		//dd($user);
 		Mail::queue("emails.emailfriend", $data, function($message)
-			use ($user, $niftar, $name)
+			// uses ($invitename, $niftar, $name)
 		{
 			$message->to(Input::get('email'))
 					->subject("משניות או לא להיות");
