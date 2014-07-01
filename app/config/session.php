@@ -122,8 +122,8 @@ return array(
 	|
 	*/
 
-	'domain' => null,
-
+	//'domain' => null,
+	'domain' => 'http://mishnah.herokuapp.com/',
 	/*
 	|--------------------------------------------------------------------------
 	| HTTPS Only Cookies
