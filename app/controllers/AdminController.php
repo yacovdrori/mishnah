@@ -163,7 +163,8 @@ class AdminController extends BaseController {
 		$nfathersname = $niftar->fathersname;
 		$nmothersname = $niftar->mothersname;
 
-		$data = array('name' => $name , 
+		$data = array('id' => $user->id ,
+					  'name' => $name , 
 					  'user' => $user ,
 					  'niftar' => $niftar,
 					  'invitename' => $invitename,
