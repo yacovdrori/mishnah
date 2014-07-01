@@ -171,7 +171,7 @@ class AdminController extends BaseController {
 					  );
 
 		//	$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);
-		dd($user);
+		//dd($user);
 		Mail::queue("emails.emailfriend", $data, function($message)
 			use ($user, $niftar, $name)
 		{
