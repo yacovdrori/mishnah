@@ -1,9 +1,8 @@
-<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddLernerIdToUsersTable extends Migration {
+class AddLearnforToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +13,7 @@ class AddLernerIdToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			
+			$table->integer('learnfor')->nullable();
 		});
 	}
 
