@@ -27,7 +27,7 @@ class AddLearnforToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			
+			Schema::drop("users");
 		});
 	}
 
