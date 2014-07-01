@@ -32,7 +32,7 @@
    
 <div class="wrapper">
 <div class="content-secondary">
-	<h2><small>רשימת הנפטרים</small></h2>({{HTML::link("admin/newuser","הוסף ניפטר")}})
+	<h2><small>רשימת הנפטרים</small></h2>({{HTML::link("admin/newuser","הוסף ניפטר")}})<br />
 	
     @foreach ($users->niftar as $niftar)
     	{{HTML::link('admin/niftar/'.$niftar->id , $niftar->firstname . " " . $niftar->lastname . " בן " .
