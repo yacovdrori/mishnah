@@ -122,8 +122,8 @@ return array(
 	|
 	*/
 
-	//'domain' => null,
-	'domain' => 'herokuapp.com',
+	'domain' => null,
+	//'domain' => 'herokuapp.com',
 	/*
 	|--------------------------------------------------------------------------
 	| HTTPS Only Cookies
