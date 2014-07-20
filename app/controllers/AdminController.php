@@ -188,7 +188,7 @@ class AdminController extends BaseController {
 		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);
 		return Redirect::to('admin/niftar/' . $niftar->id)->with('niftar',$niftar)->with('friends',$friends)->with('message','נמחק בהצלחה');
 	}
-	public function getDelfriend($id)
+public function getDelfriend($id)
 	{
 		//dd($id);
 		$nid = Friend::find($id)->niftarId;
@@ -198,7 +198,20 @@ class AdminController extends BaseController {
 		return Redirect::to('admin/niftar/'.$nid)->with('niftar',Niftar::find($nid))->with('friends',$friends)->with('message','נמחק בהצלחה');
 	}
 
-	public function postNewlerner($id)
+public function getNewlerner($id)
+	{
+		$niftar = Niftar::find($id);
+		if (Auth::check())
+		{
+			//do somthing
+
+		} else {
+			return View::make('admin.newlerner')->with('niftar',$niftar);	
+		}
+		
+	}
+
+public function postNewlerner()
 	{
 		$validator = Validator::make(Input::all(), User::$rules);
      	if ($validator->passes()) {

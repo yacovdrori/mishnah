@@ -9,9 +9,18 @@
                                 <div class = "collapse navbar-collapse navHeaderCollapse">
                                
                                         <ul class = "nav navbar-nav navbar-right">
+                                        
                                         @if(!Auth::check())
                                                 <li>{{ HTML::link('users/register','הרשם והזמן חברים')}}</li>
                                         @else
+                                        @if(Auth::user()->isadmin)
+                                            <li class="dropdown">
+                                                <a href = "users/profile" class = "dropdown-toggle" data-toggle = "dropdown">ניהול<b class = "caret"></b></a>
+                                                    <ul class = "dropdown-menu">
+                                                        <li> {{HTML::link('manager/seder/','ניהול סדרי משנה')}}</li>
+                                                    </ul>
+                                            </li>
+                                        @endif
                                          <li class = "dropdown">
                                          	<a href = "users/profile" class = "dropdown-toggle" data-toggle = "dropdown">{{Auth::user()->firstname}}<b class = "caret"></b></a>
                                          	<ul class = "dropdown-menu">

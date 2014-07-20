@@ -26,6 +26,7 @@ Route::get('/', function()
 //Route::post('reg', array('uses' => 'HomeController@doReg'));
 Route::controller('users', 'UsersController');
 Route::controller('admin', 'AdminController');
+Route::controller('manager', 'ManagerController');
 //Route::get('admin/niftar/{id}', 'AdminController@getNiftar');
 
 // Confide routes
