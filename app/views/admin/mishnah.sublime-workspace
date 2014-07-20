@@ -1,0 +1,381 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"nif",
+				"niftar"
+			],
+			[
+				"ar",
+				"array	$… = array (…)"
+			],
+			[
+				"inp",
+				"Input"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"nf",
+				"nfirstname"
+			],
+			[
+				"fa",
+				"fathersname"
+			],
+			[
+				"ni",
+				"niftar"
+			],
+			[
+				"fr",
+				"friends"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"fun",
+				"create_function"
+			],
+			[
+				"pu",
+				"public"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "niftars.blade.php",
+			"settings":
+			{
+				"buffer_size": 1845,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\n \nclass AdminController extends BaseController {\n\n	 // public function __construct()\n  //   {\n  //       $this->beforeFilter('auth', array('except' => 'getLogin'));\n  //   }\n\n	public function getNewuser()\n	{\n		return View::make('admin.newuser');\n	}\n	public function postNewuser()\n	{\n		$rules = array('firstname' 	=> 'required|alpha' , \n					   'lastname'  	=> 'required|alpha',\n					   'death_date' => 'date',\n					   'birthdate'  => 'date'\n		);\n		$validator = Validator::make(Input::all(), $rules);\n		if ($validator->fails()){\n			return Redirect::to('admin/newuser')\n				->withErrors($validator)\n				->withInput(Input::get())\n				;\n		} else {\n			\n				$niftar = new Niftar;\n					$niftar->firstname	= Input::get('firstname');\n					$niftar->lastname	= Input::get('lastname');\n					$niftar->user_id	= Auth::user()->id;\n					// $niftar->image	= Input::get('');\n					$niftar->death_date	= Input::get('death_date');\n					$niftar->description	= Input::get('description');\n					$niftar->birthdate	= Input::get('birthdate');\n					$niftar->fathersname	= Input::get('fathersname');\n					$niftar->mothersname	= Input::get('mothersname');\n					$niftar->city	= Input::get('city');\n					$niftar->state	= Input::get('state');\n					$niftar->save();\n					return Redirect::to('admin/profile');\n			}\n	}\n	\n	public function postLogin()\n	{\n				// validate the info, create rules for the inputs\n		$rules = array(\n			'email'    => 'required|email', // make sure the email is an actual email\n			'password' => 'required|alphaNum|min:3' // password can only be alphanumeric and has to be greater than 3 characters\n		);\n\n		// run the validation rules on the inputs from the form\n		$validator = Validator::make(Input::all(), $rules);\n\n		// if the validator fails, redirect back to the form\n		if ($validator->fails()) {\n			return Redirect::to('users/login')\n				->withErrors($validator) // send back all errors to the login form\n				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form\n		} else {\n\n			// create our user data for the authentication\n			$userdata = array(\n				'email' 	=> Input::get('email'),\n				'password' 	=> Input::get('password')\n			);\n\n			// attempt to do the login\n			if (Auth::attempt($userdata)) {\n\n				// validation successful!\n				// redirect them to the secure section or whatever\n				// return Redirect::to('secure');\n				// for now we'll just echo success (even though echoing in a controller is bad)\n				//echo 'SUCCESS!';\n				return Redirect::to('/');\n\n			} else {	 	\n\n				// validation not successful, send back to form	\n				return Redirect::to('users/login')->with('message', 'שם משתמש לא קיים או סיסמה שאינה נכונה. אנא נסה שנית');\n\n			}\n\n		}\n	} \n	\n	public function getLogout()\n	{\n		Auth::logout(); // log the user out of our application\n		return Redirect::to('/'); // redirect the user to the login screen\n	}\n	\n	public function postCreate() \n	{\n    	$validator = Validator::make(Input::all(), User::$rules);\n     	if ($validator->passes()) {\n        	    $user = new User;\n			    $user->firstname = Input::get('firstname');\n			    $user->lastname = Input::get('lastname');\n			    $user->email = Input::get('email');\n			    $user->password = Hash::make(Input::get('password'));\n			    $user->save();\n				// Mail::send('emails.welcome', array('firstname'=>Input::get('firstname')), function($message)\n					// {\n					    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');\n					// });\n				\n				if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){\n					$msg=\"got in\";\n					\n				}\n				else {\n					$msg=\"not in \";\n									}\n				\n				return Redirect::to('/users/login')->with('message', 'ברוכים הבאים');\n        	// validation has passed, save user in DB\n        	\n    	} else {\n        	// validation has failed, display error messages\n				return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();\n    	}\n	}\n	public function getProfile()\n	{\n		//$users=User::find(Auth::user()->id)->get();\n		//$niftars=Niftar::find(Auth::user()->id);\n		// $a = array('u'=>$users,\n					// 'n'=>$niftars);\n		return View::make('admin/profile')->with('users',User::find(Auth::user()->id));\n		//return View::make('admin/profile',$a);\n	}\n	public function getNiftar($id)\n	{\n		$friends=Friend::where('niftarId','=', value($id))->get();\n		return View::make('admin/niftars')->with('niftar',Niftar::find($id))->with('friends',$friends);\n	}\n		public function getConfirm()\n	{\n		return View::make('users/confirm');\n	}\n	public function getNewfriend()\n	public function postFriend()\n	{\n		$email = Friend::where('email','=',Input::get('email'))->first();\n		//dd($email);\n		if (is_null($email))\n		{\n			$friend = new Friend;\n			$friend->name = Input::get('name');\n			$friend->email = Input::get('email');\n			$friend->niftarId = Input::get('niftarId');\n			$friend->save();\n		$user= new User;\n		$user = User::find(Auth::user()->id);\n		$name = Input::get('name');\n		$invitename = $user->firstname . \" \" . $user->lastname;\n		$relationship = \"בן\";\n		$niftar = Niftar::find(Input::get('niftarId'));\n		$nfirstname = $niftar->firstname;\n		$nfathersname = $niftar->fathersname;\n		$nmothersname = $niftar->mothersname;\n\n		$data = array('id' => Input::get('niftarId') ,\n					  'name' => $name , \n					  'user' => $user ,\n					  'niftar' => $niftar,\n					  'invitename' => $invitename,\n					  'niftarname' => $niftar->firstname . ' בן  ' . $niftar->fathersname,\n					  );\n\n		//	$user,$name,$invitename,$relationship,$nfathersname,$nfirstname,$nmothersname);\n		//dd($user);\n		Mail::queue(\"emails.emailfriend\", $data, function($message)\n			// uses ($invitename, $niftar, $name)\n		{\n			$message->to(Input::get('email'))\n					->subject(\"משניות או לא להיות\");\n			\n		}\n		);\n		$message = Input::get('name') . 'הוסף בהצלחה'	;\n		}\n		$message = 'הכתובת כבר במערכת, נסה שם אחר';\n		$friends = Friend::where('niftarId',\"=\",$niftar->id)->get();\n		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);\n		return Redirect::to('admin/niftar/' . $niftar->id)->with('niftar',$niftar)->with('friends',$friends)->with('message','נמחק בהצלחה');\n	}\n	public function getDelfriend($id)\n	{\n		//dd($id);\n		$nid = Friend::find($id)->niftarId;\n		$friends = Friend::where('niftarId',\"=\",$nid)->get();\n		$friend = Friend::find($id);\n		$friend->delete();\n		return Redirect::to('admin/niftar/'.$nid)->with('niftar',Niftar::find($nid))->with('friends',$friends)->with('message','נמחק בהצלחה');\n	}\n\n	public function postNewlerner($id)\n	{\n		$validator = Validator::make(Input::all(), User::$rules);\n     	if ($validator->passes()) {\n        	    $user = new User;\n			    $user->firstname = Input::get('firstname');\n			    $user->lastname = Input::get('lastname');\n			    $user->email = Input::get('email');\n			    $user->password = Hash::make(Input::get('password'));\n			    $user->learnfor = Input::get('niftar_id');\n			    $user->save();\n				// Mail::send('emails.welcome', array('firstname'=>Input::get('firstname')), function($message)\n					// {\n					    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');\n					// });\n				\n				if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){\n					$msg=\"got in\";\n					\n				}\n				else {\n					$msg=\"not in \";\n									}\n				\n				return Redirect::to('/admin/pickmasechet')->with('message', 'ברוכים הבאים');\n        	// validation has passed, save user in DB\n        	\n    	} else {\n        	// validation has failed, display error messages\n				return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();\n    	}\n	}\n	\n}\n?>",
+			"file": "/C/Users/Student/Documents/workspace/mishnah/app/controllers/AdminController.php",
+			"file_size": 8239,
+			"file_write_time": 130487065080457721,
+			"settings":
+			{
+				"buffer_size": 7859,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Student/Documents/workspace/mishnah/app/views/emails/emailfriend.blade.php",
+			"settings":
+			{
+				"buffer_size": 335,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Student/Documents/workspace/mishnah/app/models/User.php",
+			"settings":
+			{
+				"buffer_size": 1854,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "newlerner.blade.php",
+			"settings":
+			{
+				"buffer_size": 1135,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Student/Documents/workspace/mishnah/app/controllers/UsersController.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_07_01_161614_add_learnfor_to_users_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_07_01_160850_add_lerner_id_to_users_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/views/admin/profile.blade.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_05_30_112728_create_lerners_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_07_01_151308_create_friend_user_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/views/users/login.blade.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/views/admin/newuser.blade.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_05_14_123323_confide_setup_users_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/database/migrations/2014_06_16_153656_create_friends_table.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/config/session.php",
+		"/C/Users/Student/yan.txt",
+		"/C/unetbtin/menu.lst",
+		"/C/Users/Student/Documents/workspace/mishnah/app/config/mail.php",
+		"/C/Users/Student/Documents/workspace/mishnah/composer.json",
+		"/C/Users/Student/Documents/workspace/mishnah/app/models/Friend.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/models/Niftar.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/models/User.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/views/emails/welcome.blade.php",
+		"/F/README.diskdefines",
+		"/C/Users/Student/Documents/workspace/mishnah/app/filters.php",
+		"/C/Users/Student/Documents/workspace/mishnah/app/routes.php",
+		"/C/Users/Student/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"data"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "niftars.blade.php",
+					"settings":
+					{
+						"buffer_size": 1845,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								87,
+								87
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 46.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Student/Documents/workspace/mishnah/app/controllers/AdminController.php",
+					"settings":
+					{
+						"buffer_size": 7859,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4638,
+								4638
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3088.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Student/Documents/workspace/mishnah/app/views/emails/emailfriend.blade.php",
+					"settings":
+					{
+						"buffer_size": 335,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								308,
+								308
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Student/Documents/workspace/mishnah/app/models/User.php",
+					"settings":
+					{
+						"buffer_size": 1854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1435,
+								1435
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1888.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "newlerner.blade.php",
+					"settings":
+					{
+						"buffer_size": 1135,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								979,
+								988
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 11.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true
+}
