@@ -39,7 +39,8 @@
 
     @foreach($masechets as $masechet)
         <li>
-            {{$masechet->seder_id}} {{$masechet->name}}({{$masechet->size}}){{HTML::link("manager/delmasechet/" . $masechet->id ,'(מחק)')}}
+            {{$masechet->seder_id}} {{HTML::link('manager/editmasechet/' . $masechet->id, $masechet->name)}}({{$masechet->size}})
+            {{HTML::link("manager/delmasechet/" . $masechet->id ,'(מחק)')}}
         </li>
     @endforeach
 
