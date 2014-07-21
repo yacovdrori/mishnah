@@ -4,12 +4,13 @@
                     <script type="text/javascript">
                     //<!--
                       $(document).ready(function() {
-                        $('.selector').checkboxTree({
+                        $('#tree1').checkboxTree({
                           /* specify here your options */
                         });
                       });
                     //-->
                     </script>
+                    
 <div class=" container">
 <div class="jumbotron">
 	{{ Form::open(array('url' => 'manager/seder','class'=>'form-signup')) }}
@@ -46,13 +47,24 @@
     {{ Form::submit('הוסף', array('class'=>'btn btn-large btn-primary '))}}
 
     {{ Form::close() }}
-
-    @foreach($masechets as $masechet)
-        <li>
-            {{$masechet->seder->name}} {{HTML::link('manager/editmasechet/' . $masechet->id, $masechet->name)}}({{$masechet->size}})
-            {{HTML::link("manager/delmasechet/" . $masechet->id ,'(מחק)')}}
-        </li>
+    <ul id="tree1">
+    @foreach($seders as $seder)
+        <ul>
+            <li>{{ Form::checkbox('seder[]',$seder->name,false) }} {{ Form::label('seder[]',$seder->name)}}
+                <ul>
+        @foreach($seder->masechet as $masechet)
+            <li>{{ Form::checkbox('masechet[]',$masechet->name,false) }} {{ Form::label('masechet[]',$masechet->name)}}
+        @endforeach
+            </ul>
+        </ul>
     @endforeach
+    </ul>
+   {{-- @foreach($masechets as $masechet)
+              <li>
+                  {{$masechet->seder->name}} {{HTML::link('manager/editmasechet/' . $masechet->id, $masechet->name)}}({{$masechet->size}})
+                  {{HTML::link("manager/delmasechet/" . $masechet->id ,'(מחק)')}}
+              </li>
+          @endforeach --}}
 
 </div>
 </div>

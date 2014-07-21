@@ -5,8 +5,12 @@ class ManagerController extends BaseController {
 	public function getSeder()
 	{
 		$seder_op = Seder::all()->lists('name','id');
-		$masechet = Masechet::all();
-		return View::make('manager.seder')->with('seders',Seder::all())->with('seder_op', $seder_op)->with('masechets', $masechet);
+		//$masechet = Masechet::orderBy('seder_id')->get();
+		return View::make('manager.seder')
+				->with('seders',Seder::all())
+				->with('seder_op', $seder_op)
+				//->with('masechets', $masechet)
+				;
 	}
 
 	public function postSeder()
