@@ -38,7 +38,7 @@
 <div class="content-secondary">
 </div>
 <h3>חברים שהוזמנו</h3>
-@foreach ($friends->all() as $friend)
+@foreach ($friends as $friend)
 	<div class="row">
 		<div class="col-md-5"></div>
 		<div class="col-md-3">{{$friend->name}}</div>
