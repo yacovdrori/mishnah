@@ -9,4 +9,8 @@ class Seder extends \Eloquent {
 	 */
 	protected $table = 'seders';
 	public  $timestamps = true;
+	public function masechet()
+	{
+		return $this->hasMany('Masechet');
+	}
 }

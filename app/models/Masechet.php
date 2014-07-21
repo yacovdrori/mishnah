@@ -1,6 +1,6 @@
 <?php
 
-class Masechet extends \Eloquent {
+class Masechet extends Eloquent {
 	protected $fillable = [];
 
 	protected $table = 'masechets';
@@ -8,7 +8,10 @@ class Masechet extends \Eloquent {
 
 	public function seder()
 	{
-		$this->belongs_to('Seder');
+		return $this->belongsTo('Seder');
 	}
-
+	// public function getSederNameAttribute()
+	// {
+	// 	return $this->Seder->name;
+	// }
 }

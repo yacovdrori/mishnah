@@ -1,5 +1,15 @@
 @extends('index')
 @section('content')
+    <!-- initialize checkboxTree plugin -->
+                    <script type="text/javascript">
+                    //<!--
+                      $(document).ready(function() {
+                        $('.selector').checkboxTree({
+                          /* specify here your options */
+                        });
+                      });
+                    //-->
+                    </script>
 <div class=" container">
 <div class="jumbotron">
 	{{ Form::open(array('url' => 'manager/seder','class'=>'form-signup')) }}
@@ -39,7 +49,7 @@
 
     @foreach($masechets as $masechet)
         <li>
-            {{$masechet->seder_id}} {{HTML::link('manager/editmasechet/' . $masechet->id, $masechet->name)}}({{$masechet->size}})
+            {{$masechet->seder->name}} {{HTML::link('manager/editmasechet/' . $masechet->id, $masechet->name)}}({{$masechet->size}})
             {{HTML::link("manager/delmasechet/" . $masechet->id ,'(מחק)')}}
         </li>
     @endforeach
