@@ -185,7 +185,7 @@ class AdminController extends BaseController {
 		}
 		$message = 'הכתובת כבר במערכת, נסה שם אחר';
 		$friends = Friend::where('niftarId',"=",$niftar->id)->get();
-		return View::make('admin/niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);
+		//return View::make('admin.niftars')->with('niftar',Niftar::find(Input::get('niftarId')))->with('friends',Friend::find(Input::get('niftarId')))->with('message',$message);
 		return Redirect::to('admin/niftar/' . $niftar->id)->with('niftar',$niftar)->with('friends',$friends)->with('message','נמחק בהצלחה');
 	}
 public function getDelfriend($id)
@@ -212,37 +212,41 @@ public function getNewlerner($id)
 	}
 
 public function postNewlerner()
-	{
-		$validator = Validator::make(Input::all(), User::$rules);
-     	if ($validator->passes()) {
-        	    $user = new User;
-			    $user->firstname = Input::get('firstname');
-			    $user->lastname = Input::get('lastname');
-			    $user->email = Input::get('email');
-			    $user->password = Hash::make(Input::get('password'));
-			    $user->learnfor = Input::get('niftar_id');
-			    $user->save();
-				// Mail::send('emails.welcome', array('firstname'=>Input::get('firstname')), function($message)
-					// {
-					    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');
-					// });
+{
+	$validator = Validator::make(Input::all(), User::$rules);
+ 	if ($validator->passes()) {
+    	    $user = new User;
+		    $user->firstname = Input::get('firstname');
+		    $user->lastname = Input::get('lastname');
+		    $user->email = Input::get('email');
+		    $user->password = Hash::make(Input::get('password'));
+		    $user->learnfor = Input::get('niftar_id');
+		    $user->save();
+			// Mail::send('emails.welcome', array('firstname'=>Input::get('firstname')), function($message)
+				// {
+				    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');
+				// });
+			
+			if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){
+				$msg="got in";
 				
-				if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){
-					$msg="got in";
-					
-				}
-				else {
-					$msg="not in ";
-									}
-				
-				return Redirect::to('/admin/pickmasechet')->with('message', 'ברוכים הבאים');
-        	// validation has passed, save user in DB
-        	
-    	} else {
-        	// validation has failed, display error messages
-				return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
-    	}
+			}
+			else {
+				$msg="not in ";
+								}
+			
+			return Redirect::to('/admin/pickmasechet')->with('message', 'ברוכים הבאים');
+    	// validation has passed, save user in DB
+    	
+	} else {
+    	// validation has failed, display error messages
+			return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
 	}
+}
+public function getPickmasechet()
+{
+	return View::make('admin.pickmasechet');
+}
 	
 }
 ?>
