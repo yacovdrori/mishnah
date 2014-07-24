@@ -50,6 +50,8 @@
 		</div>	
 	</div>
 @endforeach
+<h3>נרשמו ללמוד</h3>
+
 </div>
 </div> 
 

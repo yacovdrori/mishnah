@@ -226,7 +226,7 @@ public function postNewlerner()
 				// {
 				    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');
 				// });
-			
+			$user->learnfor()->attach(Input::get('niftar_id'));
 			if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){
 				$msg="got in";
 				
