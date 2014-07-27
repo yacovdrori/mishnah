@@ -18,6 +18,7 @@
                                                 <a href = "users/profile" class = "dropdown-toggle" data-toggle = "dropdown">ניהול<b class = "caret"></b></a>
                                                     <ul class = "dropdown-menu">
                                                         <li> {{HTML::link('manager/seder/','ניהול סדרי משנה')}}</li>
+                                                        <li> {{HTML::link('manager/users/','ניהול משתמשים')}}</li>
                                                     </ul>
                                             </li>
                                         @endif

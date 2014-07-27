@@ -83,4 +83,17 @@ class ManagerController extends BaseController {
 		return Redirect::to('manager/seder')->with('message', Input::get('name') . ' נשמר');	
 
 	}
+
+	public function getUsers()
+	{
+		return View::make('manager.users')->with('users',User::all());
+	}
+
+	public function getDeluser($id)
+	{
+		$user = User::find($id);
+		$user->delete();
+
+		return View::make('manager.users')->with('users',User::all());
+	}
 }

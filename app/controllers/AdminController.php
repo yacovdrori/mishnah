@@ -203,7 +203,9 @@ public function getNewlerner($id)
 		$niftar = Niftar::find($id);
 		if (Auth::check())
 		{
-			//do somthing
+			$user =User::find(Auth::user()->id);
+			$user->learnfor()->attach($id);
+
 
 		} else {
 			return View::make('admin.newlerner')->with('niftar',$niftar);	
