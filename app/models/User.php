@@ -86,7 +86,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	public function learnfor()
 	{
-		return $this->belongsToMany('User','niftar_user','niftar_id','user_id')->withTimestamps();
+		return $this->belongsToMany('User','niftar_user','user_id','niftar_id')->withTimestamps();
 	}
 	
 public static $rules = array(
