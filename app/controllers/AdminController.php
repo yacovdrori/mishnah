@@ -204,7 +204,7 @@ public function getNewlerner($id)
 		if (Auth::check())
 		{
 			$user =User::find(Auth::user()->id);
-			$user->learnfor()->attach($id);
+			$user->learnsfor()->attach($id)	;
 
 
 		} else {
@@ -228,27 +228,37 @@ public function postNewlerner()
 				// {
 				    // $message->to(Input::get('email'), Input::get('firstname'))->subject('השלמת הרשמה ללימוד משניות');
 				// });
-			$user->learnfor()->attach(Input::get('niftar_id'));
+			$user->learnsfor()->attach(Input::get('niftar_id'));
 			if (Auth::attempt(array('email' => $user->email, 'password' =>Input::get('password')))){
 				$msg="got in";
 				
 			}
 			else {
 				$msg="not in ";
-								}
+				}
 			
-			return Redirect::to('/admin/pickmasechet')->with('message', 'ברוכים הבאים');
+			return Redirect::to('/admin/pickmasechet/' . Input::get('niftar_id'))->with('message', 'ברוכים הבאים');
     	// validation has passed, save user in DB
     	
-	} else {
+	} else {;
     	// validation has failed, display error messages
 			return Redirect::to('users/register')->with('message', 'The following errors occurred')->withErrors($validator)->withInput();
 	}
 }
-public function getPickmasechet()
+public function getPickmasechet($id)
 {
-	return View::make('admin.pickmasechet');
+	return View::make('admin.pickmasechet')->with('seders',Seder::all())->with('niftar_id',$id);
 }
-	
+public function postPickmasechet()
+{
+	$ch = Input::get('masechet');
+	$nu = Niftaruser::user(Auth::user()->id)->niftar(Input::get('niftar_id'));
+	foreach($ch as $mas)
+	{
+		$nu->masechets()->attach($mas);
+	}
+
+	return View::make('admin.pm')->with('ch',$ch);
+}
 }
 ?>

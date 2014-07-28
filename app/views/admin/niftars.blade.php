@@ -51,7 +51,9 @@
 	</div>
 @endforeach
 <h3>נרשמו ללמוד</h3>
-
+    @foreach($niftar->learningforme as $lfm)
+        {{$lfm->firstname}}
+    @endforeach
 </div>
 </div> 
 

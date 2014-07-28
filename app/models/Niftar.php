@@ -22,6 +22,11 @@ class Niftar extends Eloquent {
 		return $this->hasMany('Friend','niftarId','id');
 	}
 
+	public function learningforme()
+	{
+		return $this->belongsToMany('Niftar','niftar_user','niftar_id','user_id')->withTimestamps();
+	}
+
 	public static $rules = array('firstname' 	=> 'required|alpha' , 
 					   'lastname'  	=> 'required|alpha',
 					   'death_date' => 'date',
