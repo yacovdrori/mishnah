@@ -16,6 +16,6 @@ class Niftaruser extends Eloquent {
 	
 	public function masechets() 
 	{
-		return $this->belongsToMany('Niftaruser', 'masechet_niftar_user', 'id', 'id');
+		return $this->belongsToMany('Niftaruser', 'masechet_niftar_user', 'niftar_user_id', 'masechet_id')->withTimestamps();
 	}
 }

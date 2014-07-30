@@ -10,6 +10,11 @@ class Masechet extends Eloquent {
 	{
 		return $this->belongsTo('Seder');
 	}
+
+	public function learner()
+	{
+		return $this->belongsToMany('Masechet','masechet_niftar_user','masechet_id','niftar_user_id');
+	}
 	// public function getSederNameAttribute()
 	// {
 	// 	return $this->Seder->name;

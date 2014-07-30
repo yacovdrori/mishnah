@@ -17,14 +17,18 @@
     <h2>בחר מסכת</h2>
 {{ Form::open(array('url' => 'admin/pickmasechet','class'=>'form-inline','role'=>'form','id'=>'addFriend')) }}
 <div class="row">
-    <div class="col-md-4 pull-right">
-    <ul id="tree1">
+    <div class="col-md-4 pull-right btn-group" data-toggle="buttons">
+    <ul id="tree">
     @foreach($seders as $seder)
         <ul>
             <li>{{ Form::checkbox('seder[]',$seder->id,false) }} {{ Form::label('seder[]',$seder->name)}}
                 <ul>
         @foreach($seder->masechet as $masechet)
-            <li>{{ Form::checkbox('masechet[]',$masechet->id,false) }} {{ Form::label('masechet[]',$masechet->name)}}
+            @if(isset($masechet->learner->niftar_user_id))
+                <li>{{ Form::checkbox('masechet[]',$masechet->id,true,array('disabled'=>'disabled')) }} {{ Form::label('masechet[]',$masechet->name)}}
+            @else
+                <li>{{ Form::checkbox('masechet[]',$masechet->id,false) }} {{ Form::label('masechet[]',$masechet->name, array('class'=>'btn btn-primary'))}}
+            @endif
         @endforeach
             </ul>
         </ul>

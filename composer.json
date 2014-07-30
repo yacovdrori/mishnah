@@ -9,7 +9,9 @@
 		"laravelbook/ardent": "dev-master",
 		"codesleeve/asset-pipeline": "dev-master",
 		"facebook/php-sdk": "dev-master",
-		"patchwork/utf8": "1.1.*"
+		"patchwork/utf8": "1.1.*",
+		"doctrine/dbal": "2.3.4"
+
 
 	},
 	"autoload": {

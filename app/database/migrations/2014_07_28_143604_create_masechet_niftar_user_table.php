@@ -18,7 +18,7 @@ class CreateMasechetNiftarUserTable extends Migration {
 			$table->integer('masechet_id')->unsigned()->index();
 			$table->foreign('masechet_id')->references('id')->on('masechets')->onDelete('cascade');
 			$table->integer('niftar_user_id')->unsigned()->index();
-			$table->foreign('niftar_user_id')->references('id')->on('niftar_users')->onDelete('cascade');
+			$table->foreign('niftar_user_id')->references('id')->on('niftar_user')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

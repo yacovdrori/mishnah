@@ -252,10 +252,12 @@ public function getPickmasechet($id)
 public function postPickmasechet()
 {
 	$ch = Input::get('masechet');
-	$nu = Niftaruser::user(Auth::user()->id)->niftar(Input::get('niftar_id'));
+	$nu = Niftaruser::user(Auth::user()->id)->niftar(Input::get('niftar_id'))->first();
+	// echo dd($nu);
 	foreach($ch as $mas)
 	{
 		$nu->masechets()->attach($mas);
+		//echo($nu->user_id);
 	}
 
 	return View::make('admin.pm')->with('ch',$ch);
