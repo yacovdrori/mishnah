@@ -15,12 +15,12 @@
  <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 col-xs-8 col-md-offset-6">
-        {{ Form::text('firstname', null, array('class'=>'form-control', 'placeholder'=>'שם פרטי')) }}<br />
+        {{ Form::text('firstname', null, array('class'=>'form-control input-sm', 'placeholder'=>'שם פרטי')) }}<br />
 
-        {{ Form::text('lastname', null, array('class'=>'form-control', 'placeholder'=>'שם משפחה')) }}<br />
-        {{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'כתובת דוא"ל')) }}<br />
-        {{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'סיסמה')) }}<br />
-        {{ Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'אשר סיסמה')) }}<p />
+        {{ Form::text('lastname', null, array('class'=>'form-control input-sm', 'placeholder'=>'שם משפחה')) }}<br />
+        {{ Form::text('email', null, array('class'=>'form-control input-sm', 'placeholder'=>'כתובת דוא"ל')) }}<br />
+        {{ Form::password('password', array('class'=>'form-control input-sm', 'placeholder'=>'סיסמה')) }}<br />
+        {{ Form::password('password_confirmation', array('class'=>'form-control input-sm', 'placeholder'=>'אשר סיסמה')) }}<p />
      
         {{ Form::submit('Register', array('class'=>'btn btn-large btn-primary '))}}
     			

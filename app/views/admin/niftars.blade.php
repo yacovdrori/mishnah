@@ -15,23 +15,32 @@
     <div class="container text-right">
     	{{ Form::open(array('url' => 'admin/friend','class'=>'form-inline','role'=>'form','id'=>'addFriend')) }}
     	<div class="row">
-    		<div class="col-md-3 "></div>
-    		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
-    		<div class="col-md-3 ">{{ Form::text('name', null, array('class'=>'form-control', 'placeholder'=>'שם החבר','id'=>'name')) }}</div>
-    		<div class="col-md-3 ">{{ Form::text('email', null, array('class'=>'form-control', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
-    		{{ Form::hidden('niftarId', $niftar->id)}}
-    		<div class="col-md-1 ">הזמן חבר</div>
-    	</div>
-    	<div class="row">
-    		<div class="col-md-8"></div>
-    		<div class="col-md-2">דוא"ל</div>
-    		<div class="col-md-2">שם</div>    		
-    	</div>
-    	<div class="row">
-    		<div class="col-md-8"></div>
-    		<div class="col-md-2">{{--$users->email--}}</div>
-    		<div class="col-md-2">דוא"ל:</div>    		
-    	</div>
+            <div class="col-md-3">
+                @if(!is_null($niftar->image))
+                    {{HTML::image('/uploads/' . $niftar->image, $niftar->firstname . ' ' . $niftar->lastname, array('class' => 'img-circle img-responsive'))}}
+                @endif
+            </div>            
+            <div class="col-md-9">
+                <div class="row">               
+            		<div class="col-md-3 "></div>
+            		<div class="col-md-2 ">{{ Form::submit('המשך->', array('class'=>'btn btn-xs  '))}}</div>
+            		<div class="col-md-3 ">{{ Form::text('name', null, array('class'=>'form-control input-sm', 'placeholder'=>'שם החבר','id'=>'name')) }}</div>
+            		<div class="col-md-3 ">{{ Form::text('email', null, array('class'=>'form-control input-sm', 'placeholder'=>'דוא"ל','id'=>'email')) }}</div>
+            		{{ Form::hidden('niftarId', $niftar->id)}}
+            		<div class="col-md-1 ">הזמן חבר</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-8"></div>
+            		<div class="col-md-2">דוא"ל</div>
+            		<div class="col-md-2">שם</div>    		
+            	</div>
+            	<div class="row">
+            		<div class="col-md-8"></div>
+            		<div class="col-md-2">{{--$users->email--}}</div>
+            		<div class="col-md-2">דוא"ל:</div>    		
+            	</div>
+            </div>
+        </div>
     </div>
    
 <div class="wrapper">
