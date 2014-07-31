@@ -42,6 +42,12 @@
     		
     	</small>
     @endforeach
+
+    <h2>למד עבור</h2>
+    @foreach(Niftar::all() as $niftar)
+        {{$niftar->firstname}}<br />
+    @endforeach
+
 </div>
 </div>
 </div> 

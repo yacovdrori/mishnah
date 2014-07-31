@@ -247,7 +247,16 @@ public function postNewlerner()
 }
 public function getPickmasechet($id)
 {
-	return View::make('admin.pickmasechet')->with('seders',Seder::all())->with('niftar_id',$id);
+	$nu = Niftaruser::user(Auth::user()->id)->niftar($id)->first();
+	if (is_null($nu)){
+		$user = User::find(Auth::user()->id);
+		$user->learnsfor()->attach($id);
+	}
+	$pickedMas=Masechetniftaruser::niftaruser($nu->id)->lists('masechet_id');
+	$pickedMasAll=Masechetniftaruser::niftar($id)->lists('masechet_id');
+	// echo($id);
+	// echo(dd($pickedMas));
+	return View::make('admin.pickmasechet')->with('seders',Seder::all())->with('niftar_id',$id)->with('pickedMas',$pickedMas)->with('pickedMasAll',$pickedMasAll);
 }
 public function postPickmasechet()
 {
@@ -260,7 +269,7 @@ public function postPickmasechet()
 		//echo($nu->user_id);
 	}
 
-	return View::make('admin.pm')->with('ch',$ch);
+	return Redirect::to('admin/profile');
 }
 }
 ?>
