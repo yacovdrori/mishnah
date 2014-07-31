@@ -32,8 +32,24 @@
    
 <div class="wrapper">
 <div class="content-secondary">
+    <h2>נרשמתי ללמוד עבור</h2>
+    <?php $niftaruser= Niftaruser::user(Auth::user()->id)->get()?>
+    <ul>
+    @foreach( $niftaruser as $niftar)
+        <?php $nif= Niftar::find($niftar->niftar_id)?>
+        <li>{{$nif->firstname}} {{$nif->lastname}}
+        <?php $mases = Masechetniftaruser::niftaruser($niftar->id)->get() ?>
+        <ul>
+        @foreach($mases as $mas)
+            <li>{{Masechet::find($mas->id)->name}} <br />
+        @endforeach
+        </ul>
+    @endforeach
+    </ul>
+
 	<h2><small>רשימת הנפטרים</small></h2>({{HTML::link("admin/newuser","הוסף ניפטר")}})<br />
 	
+    @if($users->niftar->count()>0)
     @foreach ($users->niftar as $niftar)
     	{{HTML::link('admin/niftar/'.$niftar->id , $niftar->firstname . " " . $niftar->lastname . " בן " .
     	 $niftar->fathersname . " ו" .$niftar->mothersname)}} 
@@ -42,6 +58,7 @@
     		
     	</small>
     @endforeach
+    @endif
 
     <h2>למד עבור</h2>
     @foreach(Niftar::all() as $niftar)

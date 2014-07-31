@@ -18,4 +18,5 @@ class Niftaruser extends Eloquent {
 	{
 		return $this->belongsToMany('Niftaruser', 'masechet_niftar_user', 'niftar_user_id', 'masechet_id')->withTimestamps();
 	}
+
 }

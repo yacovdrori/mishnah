@@ -27,7 +27,7 @@ class Niftar extends Eloquent {
 		return $this->belongsToMany('Niftar','niftar_user','niftar_id','user_id')->withTimestamps();
 	}
 
-	public static $rules = array('firstname' 	=> 'required|alpha' , 
+	public static $rules = array('firstname' 	=> 'required' , 
 					   'lastname'  	=> 'required|alpha',
 					   'death_date' => 'date',
 					   'birthdate'  => 'date'

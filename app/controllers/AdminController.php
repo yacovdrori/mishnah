@@ -13,10 +13,10 @@ class AdminController extends BaseController {
 	}
 	public function postNewuser()
 	{
-		$rules = array('firstname' 	=> 'required|alpha' , 
-					   'lastname'  	=> 'required|alpha',
+		$rules = array('firstname' 	=> 'required' , 
+					   'lastname'  	=> 'required',
 					   'death_date' => 'date',
-					   'birthdate'  => 'date'
+
 		);
 		$validator = Validator::make(Input::all(), $rules);
 		if ($validator->fails()){
@@ -25,7 +25,23 @@ class AdminController extends BaseController {
 				->withInput(Input::get())
 				;
 		} else {
+			$file = Input::file('file');
+			$destinationPath = base_path() . '/public/';
+			// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
+			$filename = str_random(12);
+			//$filename = $file->getClientOriginalName();
+			//$extension =$file->getClientOriginalExtension(); 
+			// if (Input::hasFile('photo'))
+			// {
+			    $upload_success = Input::file('file')->move($destinationPath);
+			// }
 			
+
+			// if( $upload_success ) {
+			//    return Response::json('success', 200);
+			// } else {
+			//    return Response::json('error', 400);
+				// }
 				$niftar = new Niftar;
 					$niftar->firstname	= Input::get('firstname');
 					$niftar->lastname	= Input::get('lastname');
@@ -38,6 +54,7 @@ class AdminController extends BaseController {
 					$niftar->mothersname	= Input::get('mothersname');
 					$niftar->city	= Input::get('city');
 					$niftar->state	= Input::get('state');
+					$niftar->image = $file;
 					$niftar->save();
 					return Redirect::to('admin/profile');
 			}
