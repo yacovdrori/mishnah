@@ -26,14 +26,14 @@ class AdminController extends BaseController {
 				;
 		} else {
 			$file = Input::file('file');
-			$destinationPath = base_path() . '/public/';
+			$destinationPath = public_path() . '/uploads/';
 			// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
-			$filename = str_random(12);
-			//$filename = $file->getClientOriginalName();
+			//$filename = str_random(12);
+			$filename = str_random(12) . '.' . $file->getClientOriginalExtension();
 			//$extension =$file->getClientOriginalExtension(); 
 			// if (Input::hasFile('photo'))
 			// {
-			    $upload_success = Input::file('file')->move($destinationPath);
+			    $upload_success = Input::file('file')->move($destinationPath,$filename);
 			// }
 			
 
@@ -54,7 +54,7 @@ class AdminController extends BaseController {
 					$niftar->mothersname	= Input::get('mothersname');
 					$niftar->city	= Input::get('city');
 					$niftar->state	= Input::get('state');
-					$niftar->image = $file;
+					$niftar->image = $filename;
 					$niftar->save();
 					return Redirect::to('admin/profile');
 			}
@@ -285,6 +285,13 @@ public function postPickmasechet()
 		$nu->masechets()->attach($mas);
 		//echo($nu->user_id);
 	}
+
+	return Redirect::to('admin/profile');
+}
+public function getDelniftar($id)
+{
+	$niftar =  Niftar::find($id);
+	$niftar->delete();
 
 	return Redirect::to('admin/profile');
 }

@@ -54,7 +54,7 @@
     	{{HTML::link('admin/niftar/'.$niftar->id , $niftar->firstname . " " . $niftar->lastname . " בן " .
     	 $niftar->fathersname . " ו" .$niftar->mothersname)}} 
     	<small>
-    		{{HTML::link("admin/delniftar&id=" . $niftar->id ,'(מחק)')}}
+    		{{HTML::link("admin/delniftar/" . $niftar->id ,'(מחק)')}}
     		
     	</small>
     @endforeach
