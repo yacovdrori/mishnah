@@ -96,4 +96,23 @@ class ManagerController extends BaseController {
 
 		return View::make('manager.users')->with('users',User::all());
 	}
+	public function getGroups()
+	{
+		$ng = new Niftargroup;
+		return View::make('manager.groups')->with('group', $ng);
+	}
+
+	public function postAddgroup()
+	{
+		$niftargroup = new Niftargroup;
+		$niftargroup->name = Input::get('name');
+		$niftargroup->save();
+
+		return Redirect::to('manager/groups');
+	}
+	
+	public function getEditgroups($id)
+	{
+		return View::make('manager.groups')->with('group', Niftargroup::find($id));
+	}
 }

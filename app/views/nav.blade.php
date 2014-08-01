@@ -19,6 +19,7 @@
                                                     <ul class = "dropdown-menu">
                                                         <li> {{HTML::link('manager/seder/','ניהול סדרי משנה')}}</li>
                                                         <li> {{HTML::link('manager/users/','ניהול משתמשים')}}</li>
+                                                        <li> {{HTML::link('manager/groups/','ניהול קבוצות')}}</li>
                                                     </ul>
                                             </li>
                                         @endif
