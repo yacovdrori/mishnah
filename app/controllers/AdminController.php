@@ -31,10 +31,10 @@ class AdminController extends BaseController {
 			//$filename = str_random(12);
 			$filename = str_random(12) . '.' . $file->getClientOriginalExtension();
 			//$extension =$file->getClientOriginalExtension(); 
-			// if (Input::hasFile('photo'))
-			// {
+			if (Input::hasFile('file'))
+			{
 			    $upload_success = Input::file('file')->move($destinationPath,$filename);
-			// }
+			}
 			
 
 			// if( $upload_success ) {
@@ -268,6 +268,8 @@ public function getPickmasechet($id)
 	if (is_null($nu)){
 		$user = User::find(Auth::user()->id);
 		$user->learnsfor()->attach($id);
+		$nu = Niftaruser::user(Auth::user()->id)->niftar($id)->first();
+
 	}
 	$pickedMas=Masechetniftaruser::niftaruser($nu->id)->lists('masechet_id');
 	$pickedMasAll=Masechetniftaruser::niftar($id)->lists('masechet_id');

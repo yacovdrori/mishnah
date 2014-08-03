@@ -31,7 +31,7 @@
     {{ Form::text('mothersname', null, array('class'=>'form-control', 'placeholder'=>'שם האם')) }}<br />
     {{ Form::text('city', null, array('class'=>'form-control', 'placeholder'=>'עיר מגוריו')) }}<br />
     {{ Form::text('state', null, array('class'=>'form-control', 'placeholder'=>'ארץ')) }}<br />
-    {{ Form::file('file', null, array('class'=>'form-control', 'placeholder'=>'תמונה')) }}<br />
+    {{ Form::file('file', null, array('class'=>'form-control', 'placeholder'=>'תמונה')) }}הוסף תמונה<br />
     <p />
     </div>
     </div>
