@@ -10,9 +10,8 @@
 		"codesleeve/asset-pipeline": "dev-master",
 		"facebook/php-sdk": "dev-master",
 		"patchwork/utf8": "1.1.*",
-		"doctrine/dbal": "2.3.4"
-
-
+		"doctrine/dbal": "2.3.4",
+		"artdarek/oauth-4-laravel": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
