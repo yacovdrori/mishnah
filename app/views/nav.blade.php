@@ -1,4 +1,4 @@
-                                <a href = "#" class = "navbar-brand"> משניות לעילוי נשמת</a>
+                                <a href = "#" class = "navbar-brand"> משניות לעילוי נשמת (Beta)</a>
                               
                                 <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
                                         <span class = "icon-bar"></span>
