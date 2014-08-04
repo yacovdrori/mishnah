@@ -1,5 +1,6 @@
 @extends('index')
 @section('content')
+
 <div class="container">
 <div class="jumbotron">
  
@@ -41,7 +42,33 @@
         <?php $mases = Masechetniftaruser::niftaruser($niftar->id)->get() ?>
         <ul>
         @foreach($mases as $mas)
-            <li>{{Masechet::find($mas->id)->name}} <br />
+        <?php
+        $masName = Masechet::find($mas->id)->name;
+
+         ?>
+            <li> {{$masName}}<br />
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                  עבור ללימוד המשנה
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">סגור</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{{$masName}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">סגור</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         @endforeach
         </ul>
     @endforeach

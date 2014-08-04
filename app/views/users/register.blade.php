@@ -2,6 +2,7 @@
 @section('content')
 <div class=" container">
 <div class="jumbotron">
+    
 	{{ Form::open(array('url' => 'users/create','class'=>'form-signup')) }}
 
 		<!-- if there are login errors, show them here -->
@@ -12,6 +13,7 @@
             <li>{{ $error }}</li>
         @endforeach
     </ul>
+    
  <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 col-xs-8 col-md-offset-6">

@@ -143,6 +143,7 @@ class AdminController extends BaseController {
 	}
 	public function getProfile()
 	{
+
 		//$users=User::find(Auth::user()->id)->get();
 		//$niftars=Niftar::find(Auth::user()->id);
 		// $a = array('u'=>$users,
