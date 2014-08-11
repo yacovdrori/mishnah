@@ -5,7 +5,7 @@
         </head>
         <body>
  
-                <div class = "navbar navbar-inverse navbar-static-top">
+                <div class = "navbar navbar-inverse navbar-static-top navbar-mathead">
                         <div class = "container">
                             @include('nav')
                         </div> 
