@@ -6,7 +6,7 @@
 	    	<div class="row centered">
 	    		<div class="col-md-12">
                     <center><h1>כל משנה - נשמה</h1>
-                    <p>לימוד משניות להנצח	ת יקיריכם </p>
+                    <p>לימוד משניות להנצחת יקיריכם </p>
                 </div>
             </div>
             <div class="row centered">
