@@ -14,7 +14,7 @@
                                                 <li>{{ HTML::link('users/register','הרשם והזמן חברים')}}</li>
                                                 {{ Form::open(array('url' => 'users/login','class'=>'navbar-form navbar-left')) }}
                                                 <div class="form-group">
-                                                    {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@awesome.com','class'=>'form-control  input-sm')) }}
+                                                    {{ Form::text('email', Input::old('email'), array('placeholder' => 'awesome@awesome.com','class'=>'form-control input-sm')) }}
                                                     {{ Form::password('password',array('class'=>'form-control  input-sm'))}}
                                                     {{ Form::submit('כניסה!',array('class'=>'btn btn-default btn-xs'))}}
 
