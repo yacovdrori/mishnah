@@ -8,7 +8,7 @@
                                
                                 <div class="collapse navbar-collapse navHeaderCollapse">
                                
-                                        <ul class="nav navbar-nav navbar-right">
+                                        <ul class="nav navbar-right nav-pills">
                                         
                                         @if(!Auth::check())
                                                 <li>{{ HTML::link('users/register','הרשם והזמן חברים')}}</li>

@@ -10,5 +10,9 @@ class Niftargroup extends Eloquent {
 		return $this->belongsToMany('Niftar','niftar_niftargroup','niftargroup_id', 'niftar_id');
 	}
 
+	public function scopeNiftarsingroup($id){
+
+	}
+
 
 }
